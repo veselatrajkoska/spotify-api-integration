@@ -1,7 +1,14 @@
+
+# Personal testing
+*test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# IDE related
+.idea
 
 # C extensions
 *.so
