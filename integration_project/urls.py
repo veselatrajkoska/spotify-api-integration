@@ -20,8 +20,8 @@ from django.urls import path
 from spotify_dashboard.views import *
 
 urlpatterns = [
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('index/', index, name='index'),
     path('categories/', categories, name='categories'),
     path('albums/', albums, name='albums'),
 ]

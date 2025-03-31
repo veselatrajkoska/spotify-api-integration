@@ -23,12 +23,12 @@ class SpotifyService:
 
         categories = []
         for item in response['categories']['items']:
-            category = {
-                'id': item['id'],
-                'name': item['name'],
-                'icon': self.get_category_icon(item['icons'])
-            }
-            categories.append(Category(**category))
+            categories.append(Category(
+                id = item['id'],
+                name = item['name'],
+                icon = self.get_category_icon(item['icons'])
+                )
+            )
 
         return categories
 
@@ -53,15 +53,15 @@ class SpotifyService:
 
         albums = []
         for item in response['albums']['items']:
-            album = {
-                'id': item['id'],
-                'name': item['name'],
-                'artists': self.get_album_artists(item['artists']),
-                'image': self.get_album_image(item['images']),
-                'release_date': item['release_date'],
-                'url': item['external_urls']['spotify']
-            }
-            albums.append(Album(**album))
+            albums.append(Album(
+                id = item['id'],
+                name = item['name'],
+                artists = self.get_album_artists(item['artists']),
+                image = self.get_album_image(item['images']),
+                release_date = item['release_date'],
+                url = item['external_urls']['spotify'],
+                )
+            )
 
         return albums
 
@@ -84,33 +84,3 @@ class SpotifyService:
             names.append(artist['name'])
 
         return names
-
-    def get_featured_playlists(self):
-        """
-        Returns a list of featured playlists.
-        """
-        response = self.api.make_request(endpoint = 'browse/featured-playlists')
-
-        playlists = []
-        for item in response['items']:
-            playlist = {
-                'id': item['id'],
-                'name': item['name'],
-                'description': item['description'],
-                'image': self.get_playlist_image(item['images']),
-                'number_of_tracks': item['tracks']['total'],
-                'url': item['external_urls']['spotify']
-            }
-            playlists.append(Playlist(**playlist))
-
-        return playlists
-
-    def get_playlist_image(self, images):
-        """
-        Returns the URL of the playlist image or blank thumbnail if no image is available.
-        """
-        default_thumbnail = 'https://community.spotify.com/t5/image/serverpage/image-id/25294i2836BD1C1A31BDF2?v=v2'
-        if len(images) == 0:
-            return default_thumbnail
-        else:
-            return images[0]['url']

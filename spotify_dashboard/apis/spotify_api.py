@@ -71,8 +71,6 @@ class SpotifyAPI:
         """
         Returns the authorization headers for Spotify API requests.
         """
-        token = self.get_access_token()
-        print('ACCESS TOKEN:', token)
         return {
             'Authorization': f'Bearer {self.get_access_token()}'
         }

@@ -1,14 +1,5 @@
 from dataclasses import dataclass
 
-@dataclass
-class Playlist():
-    id: str
-    name: str
-    description: str
-    image: str
-    number_of_tracks: int
-    url: str
-
 
 @dataclass
 class Category():
