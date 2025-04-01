@@ -1,6 +1,6 @@
 # Integration project
 
-This project is a Django-based integration with the Spotify API, designed to fetch and display music-related data such as categories new album releases. 
+This project is a Django-based integration with the Spotify API, designed to fetch and display music-related data such as categories and new album releases. 
 
 The application follows the Client Credentials Flow for authentication, ensuring easy API access without requiring user login. It is built using Singleton and Facade design patterns, which increase efficiency and simplify API interactions. The Spotify API client handles authentication, while a service layer abstracts API calls for better maintainability. 
 
